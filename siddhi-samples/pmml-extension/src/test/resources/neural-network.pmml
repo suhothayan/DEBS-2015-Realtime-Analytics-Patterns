@@ -1,0 +1,437 @@
+<PMML version="4.1" xmlns="http://www.dmg.org/PMML-4_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dmg.org/PMML-4_1 http://www.dmg.org/v4-1/pmml-4-1.xsd">
+ <Header copyright="Copyright (c) 2014 Supun" description="Neural Network PMML Model">
+  <Extension name="user" value="Supun" extender="Rattle/PMML"/>
+  <Application name="Rattle/PMML" version="1.4"/>
+  <Timestamp>2014-05-29 16:46:16</Timestamp>
+ </Header>
+ <DataDictionary numberOfFields="23">
+  <DataField name="response" optype="continuous" dataType="double"/>
+  <DataField name="A_follower_count" optype="continuous" dataType="double"/>
+  <DataField name="A_following_count" optype="continuous" dataType="double"/>
+  <DataField name="A_listed_count" optype="continuous" dataType="double"/>
+  <DataField name="A_mentions_received" optype="continuous" dataType="double"/>
+  <DataField name="A_retweets_received" optype="continuous" dataType="double"/>
+  <DataField name="A_mentions_sent" optype="continuous" dataType="double"/>
+  <DataField name="A_retweets_sent" optype="continuous" dataType="double"/>
+  <DataField name="A_posts" optype="continuous" dataType="double"/>
+  <DataField name="A_network_feature_1" optype="continuous" dataType="double"/>
+  <DataField name="A_network_feature_2" optype="continuous" dataType="double"/>
+  <DataField name="A_network_feature_3" optype="continuous" dataType="double"/>
+  <DataField name="B_follower_count" optype="continuous" dataType="double"/>
+  <DataField name="B_following_count" optype="continuous" dataType="double"/>
+  <DataField name="B_listed_count" optype="continuous" dataType="double"/>
+  <DataField name="B_mentions_received" optype="continuous" dataType="double"/>
+  <DataField name="B_retweets_received" optype="continuous" dataType="double"/>
+  <DataField name="B_mentions_sent" optype="continuous" dataType="double"/>
+  <DataField name="B_retweets_sent" optype="continuous" dataType="double"/>
+  <DataField name="B_posts" optype="continuous" dataType="double"/>
+  <DataField name="B_network_feature_1" optype="continuous" dataType="double"/>
+  <DataField name="B_network_feature_2" optype="continuous" dataType="double"/>
+  <DataField name="B_network_feature_3" optype="continuous" dataType="double"/>
+ </DataDictionary>
+ <NeuralNetwork modelName="NeuralNet_model" functionName="regression" numberOfLayers="2" activationFunction="logistic">
+  <MiningSchema>
+   <MiningField name="response" usageType="predicted"/>
+   <MiningField name="A_follower_count" usageType="active"/>
+   <MiningField name="A_following_count" usageType="active"/>
+   <MiningField name="A_listed_count" usageType="active"/>
+   <MiningField name="A_mentions_received" usageType="active"/>
+   <MiningField name="A_retweets_received" usageType="active"/>
+   <MiningField name="A_mentions_sent" usageType="active"/>
+   <MiningField name="A_retweets_sent" usageType="active"/>
+   <MiningField name="A_posts" usageType="active"/>
+   <MiningField name="A_network_feature_1" usageType="active"/>
+   <MiningField name="A_network_feature_2" usageType="active"/>
+   <MiningField name="A_network_feature_3" usageType="active"/>
+   <MiningField name="B_follower_count" usageType="active"/>
+   <MiningField name="B_following_count" usageType="active"/>
+   <MiningField name="B_listed_count" usageType="active"/>
+   <MiningField name="B_mentions_received" usageType="active"/>
+   <MiningField name="B_retweets_received" usageType="active"/>
+   <MiningField name="B_mentions_sent" usageType="active"/>
+   <MiningField name="B_retweets_sent" usageType="active"/>
+   <MiningField name="B_posts" usageType="active"/>
+   <MiningField name="B_network_feature_1" usageType="active"/>
+   <MiningField name="B_network_feature_2" usageType="active"/>
+   <MiningField name="B_network_feature_3" usageType="active"/>
+  </MiningSchema>
+  <Output>
+   <OutputField name="Predicted_response" feature="predictedValue"/>
+  </Output>
+  <NeuralInputs numberOfInputs="22">
+   <NeuralInput id="1">
+    <DerivedField name="derivedNI_A_follower_count" optype="continuous" dataType="double">
+     <FieldRef field="A_follower_count"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="2">
+    <DerivedField name="derivedNI_A_following_count" optype="continuous" dataType="double">
+     <FieldRef field="A_following_count"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="3">
+    <DerivedField name="derivedNI_A_listed_count" optype="continuous" dataType="double">
+     <FieldRef field="A_listed_count"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="4">
+    <DerivedField name="derivedNI_A_mentions_received" optype="continuous" dataType="double">
+     <FieldRef field="A_mentions_received"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="5">
+    <DerivedField name="derivedNI_A_retweets_received" optype="continuous" dataType="double">
+     <FieldRef field="A_retweets_received"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="6">
+    <DerivedField name="derivedNI_A_mentions_sent" optype="continuous" dataType="double">
+     <FieldRef field="A_mentions_sent"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="7">
+    <DerivedField name="derivedNI_A_retweets_sent" optype="continuous" dataType="double">
+     <FieldRef field="A_retweets_sent"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="8">
+    <DerivedField name="derivedNI_A_posts" optype="continuous" dataType="double">
+     <FieldRef field="A_posts"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="9">
+    <DerivedField name="derivedNI_A_network_feature_1" optype="continuous" dataType="double">
+     <FieldRef field="A_network_feature_1"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="10">
+    <DerivedField name="derivedNI_A_network_feature_2" optype="continuous" dataType="double">
+     <FieldRef field="A_network_feature_2"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="11">
+    <DerivedField name="derivedNI_A_network_feature_3" optype="continuous" dataType="double">
+     <FieldRef field="A_network_feature_3"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="12">
+    <DerivedField name="derivedNI_B_follower_count" optype="continuous" dataType="double">
+     <FieldRef field="B_follower_count"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="13">
+    <DerivedField name="derivedNI_B_following_count" optype="continuous" dataType="double">
+     <FieldRef field="B_following_count"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="14">
+    <DerivedField name="derivedNI_B_listed_count" optype="continuous" dataType="double">
+     <FieldRef field="B_listed_count"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="15">
+    <DerivedField name="derivedNI_B_mentions_received" optype="continuous" dataType="double">
+     <FieldRef field="B_mentions_received"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="16">
+    <DerivedField name="derivedNI_B_retweets_received" optype="continuous" dataType="double">
+     <FieldRef field="B_retweets_received"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="17">
+    <DerivedField name="derivedNI_B_mentions_sent" optype="continuous" dataType="double">
+     <FieldRef field="B_mentions_sent"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="18">
+    <DerivedField name="derivedNI_B_retweets_sent" optype="continuous" dataType="double">
+     <FieldRef field="B_retweets_sent"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="19">
+    <DerivedField name="derivedNI_B_posts" optype="continuous" dataType="double">
+     <FieldRef field="B_posts"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="20">
+    <DerivedField name="derivedNI_B_network_feature_1" optype="continuous" dataType="double">
+     <FieldRef field="B_network_feature_1"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="21">
+    <DerivedField name="derivedNI_B_network_feature_2" optype="continuous" dataType="double">
+     <FieldRef field="B_network_feature_2"/>
+    </DerivedField>
+   </NeuralInput>
+   <NeuralInput id="22">
+    <DerivedField name="derivedNI_B_network_feature_3" optype="continuous" dataType="double">
+     <FieldRef field="B_network_feature_3"/>
+    </DerivedField>
+   </NeuralInput>
+  </NeuralInputs>
+  <NeuralLayer numberOfNeurons="10">
+   <Neuron id="23" bias="-54.0136725786912">
+    <Con from="1" weight="-18.8149646356789"/>
+    <Con from="2" weight="11.1907452103782"/>
+    <Con from="3" weight="-65.2999985050112"/>
+    <Con from="4" weight="-381.248925119655"/>
+    <Con from="5" weight="345.576559849102"/>
+    <Con from="6" weight="-1.31742240756649"/>
+    <Con from="7" weight="0.239249318167657"/>
+    <Con from="8" weight="5.31285174328081"/>
+    <Con from="9" weight="-165.605476316068"/>
+    <Con from="10" weight="0.37999684914185"/>
+    <Con from="11" weight="-1.13749526388392"/>
+    <Con from="12" weight="1.33696029177115"/>
+    <Con from="13" weight="-0.418862292112191"/>
+    <Con from="14" weight="0.608983162084088"/>
+    <Con from="15" weight="18.3114353715774"/>
+    <Con from="16" weight="-2.47871033821731"/>
+    <Con from="17" weight="0.233741876084949"/>
+    <Con from="18" weight="0.951998147404685"/>
+    <Con from="19" weight="-0.825736437456266"/>
+    <Con from="20" weight="-4.23584013578414"/>
+    <Con from="21" weight="0.036813063658821"/>
+    <Con from="22" weight="0.469990451852215"/>
+   </Neuron>
+   <Neuron id="24" bias="-579.209614382331">
+    <Con from="1" weight="-207.231299464266"/>
+    <Con from="2" weight="117.006614909672"/>
+    <Con from="3" weight="-108.022432765663"/>
+    <Con from="4" weight="-40.136630458264"/>
+    <Con from="5" weight="248.079495079322"/>
+    <Con from="6" weight="128.987309427893"/>
+    <Con from="7" weight="-197.802935615086"/>
+    <Con from="8" weight="271.620479824499"/>
+    <Con from="9" weight="-141.646842472601"/>
+    <Con from="10" weight="32.4301719531108"/>
+    <Con from="11" weight="-95.3670426140482"/>
+    <Con from="12" weight="-15.2806355616072"/>
+    <Con from="13" weight="-38.487021288802"/>
+    <Con from="14" weight="-773.788022244349"/>
+    <Con from="15" weight="-148.634101384792"/>
+    <Con from="16" weight="-219.082918529452"/>
+    <Con from="17" weight="-145.732453132736"/>
+    <Con from="18" weight="89.0291228078664"/>
+    <Con from="19" weight="-438.825087455555"/>
+    <Con from="20" weight="-593.684737051383"/>
+    <Con from="21" weight="20.9647093893633"/>
+    <Con from="22" weight="-2.64301340428876"/>
+   </Neuron>
+   <Neuron id="25" bias="587.566314054983">
+    <Con from="1" weight="-105.748077584212"/>
+    <Con from="2" weight="-35.4197926873262"/>
+    <Con from="3" weight="-75.9832818781805"/>
+    <Con from="4" weight="-254.952286120636"/>
+    <Con from="5" weight="366.849450456934"/>
+    <Con from="6" weight="441.500865392932"/>
+    <Con from="7" weight="462.692605556274"/>
+    <Con from="8" weight="218.909608907698"/>
+    <Con from="9" weight="-189.464862152963"/>
+    <Con from="10" weight="266.882247463311"/>
+    <Con from="11" weight="-1.18469995524455"/>
+    <Con from="12" weight="194.112277272522"/>
+    <Con from="13" weight="-54.792877045472"/>
+    <Con from="14" weight="-355.138483376964"/>
+    <Con from="15" weight="-97.8923936500572"/>
+    <Con from="16" weight="-100.14809205343"/>
+    <Con from="17" weight="-227.733986782571"/>
+    <Con from="18" weight="184.418532245867"/>
+    <Con from="19" weight="71.386564286579"/>
+    <Con from="20" weight="-162.206790864739"/>
+    <Con from="21" weight="48.038903403435"/>
+    <Con from="22" weight="-66.4887150260433"/>
+   </Neuron>
+   <Neuron id="26" bias="-351.975600537012">
+    <Con from="1" weight="-254.269717254345"/>
+    <Con from="2" weight="116.926423333006"/>
+    <Con from="3" weight="507.001770289123"/>
+    <Con from="4" weight="-15.8435681587277"/>
+    <Con from="5" weight="505.369063625163"/>
+    <Con from="6" weight="-160.463063707925"/>
+    <Con from="7" weight="267.993149260398"/>
+    <Con from="8" weight="55.4001868989148"/>
+    <Con from="9" weight="17.1963524625815"/>
+    <Con from="10" weight="66.5740077070736"/>
+    <Con from="11" weight="28.9348376575967"/>
+    <Con from="12" weight="57.8065954995024"/>
+    <Con from="13" weight="134.224272541393"/>
+    <Con from="14" weight="-330.412716316314"/>
+    <Con from="15" weight="-183.006495712656"/>
+    <Con from="16" weight="-267.160520662993"/>
+    <Con from="17" weight="-279.791498023406"/>
+    <Con from="18" weight="-204.880835515514"/>
+    <Con from="19" weight="20.3773031244075"/>
+    <Con from="20" weight="-0.0483099680724009"/>
+    <Con from="21" weight="-131.189685184426"/>
+    <Con from="22" weight="4.1207990673362"/>
+   </Neuron>
+   <Neuron id="27" bias="-24.9201117500707">
+    <Con from="1" weight="101.915296667317"/>
+    <Con from="2" weight="277.828664717136"/>
+    <Con from="3" weight="-177.295196429378"/>
+    <Con from="4" weight="-177.778888571279"/>
+    <Con from="5" weight="-135.115034954614"/>
+    <Con from="6" weight="14.976193114213"/>
+    <Con from="7" weight="-23.5476721820464"/>
+    <Con from="8" weight="-293.772794999605"/>
+    <Con from="9" weight="-39.1387793014808"/>
+    <Con from="10" weight="-232.183192433098"/>
+    <Con from="11" weight="-464.624296744581"/>
+    <Con from="12" weight="-271.103587428608"/>
+    <Con from="13" weight="166.03497114316"/>
+    <Con from="14" weight="566.251635778219"/>
+    <Con from="15" weight="-244.905103763502"/>
+    <Con from="16" weight="-135.00919317686"/>
+    <Con from="17" weight="173.099691821682"/>
+    <Con from="18" weight="216.934644756861"/>
+    <Con from="19" weight="-394.606823604812"/>
+    <Con from="20" weight="-35.5657321260865"/>
+    <Con from="21" weight="219.679763253368"/>
+    <Con from="22" weight="-287.193783152466"/>
+   </Neuron>
+   <Neuron id="28" bias="30.6066013644161">
+    <Con from="1" weight="-20.8841380089083"/>
+    <Con from="2" weight="-3.11092722963994"/>
+    <Con from="3" weight="6.59424514459918"/>
+    <Con from="4" weight="-49.2529852712694"/>
+    <Con from="5" weight="-15.2009116730382"/>
+    <Con from="6" weight="-0.675008826750385"/>
+    <Con from="7" weight="-0.543157790339886"/>
+    <Con from="8" weight="0.226299700638479"/>
+    <Con from="9" weight="25.9451336466389"/>
+    <Con from="10" weight="0.320706920670979"/>
+    <Con from="11" weight="-0.325664217169616"/>
+    <Con from="12" weight="-2.39404892736218"/>
+    <Con from="13" weight="-0.429185879659891"/>
+    <Con from="14" weight="150.763903650571"/>
+    <Con from="15" weight="-88.6306666135511"/>
+    <Con from="16" weight="-44.8797177349546"/>
+    <Con from="17" weight="1.53115762740746"/>
+    <Con from="18" weight="-0.961727897165015"/>
+    <Con from="19" weight="-8.06759024968673"/>
+    <Con from="20" weight="0.643989142813008"/>
+    <Con from="21" weight="0.264938570225561"/>
+    <Con from="22" weight="-0.839942454669338"/>
+   </Neuron>
+   <Neuron id="29" bias="-427.445798340748">
+    <Con from="1" weight="-11.2091934286602"/>
+    <Con from="2" weight="325.836039717935"/>
+    <Con from="3" weight="-340.710511029082"/>
+    <Con from="4" weight="-11.4791743484847"/>
+    <Con from="5" weight="293.717034191862"/>
+    <Con from="6" weight="94.4592539260568"/>
+    <Con from="7" weight="335.757893576009"/>
+    <Con from="8" weight="98.363952955852"/>
+    <Con from="9" weight="126.963830109425"/>
+    <Con from="10" weight="-247.223344795214"/>
+    <Con from="11" weight="40.7512994569614"/>
+    <Con from="12" weight="-88.1571297936194"/>
+    <Con from="13" weight="150.5859773995"/>
+    <Con from="14" weight="168.012608152993"/>
+    <Con from="15" weight="-153.269224111562"/>
+    <Con from="16" weight="-12.420704567619"/>
+    <Con from="17" weight="-54.5977562973434"/>
+    <Con from="18" weight="-19.0613723515875"/>
+    <Con from="19" weight="8.5665236850741"/>
+    <Con from="20" weight="-32.3725316921945"/>
+    <Con from="21" weight="-100.476981328683"/>
+    <Con from="22" weight="-195.208716963141"/>
+   </Neuron>
+   <Neuron id="30" bias="85.3678023449448">
+    <Con from="1" weight="0.213843828849942"/>
+    <Con from="2" weight="334.669561373302"/>
+    <Con from="3" weight="89.58294922643"/>
+    <Con from="4" weight="-105.378219962488"/>
+    <Con from="5" weight="38.5076446429636"/>
+    <Con from="6" weight="-20.453088582805"/>
+    <Con from="7" weight="-158.136472224654"/>
+    <Con from="8" weight="571.122513843615"/>
+    <Con from="9" weight="-58.5805585873974"/>
+    <Con from="10" weight="83.1570276010572"/>
+    <Con from="11" weight="283.116650674925"/>
+    <Con from="12" weight="-532.035815114516"/>
+    <Con from="13" weight="-30.1847005322545"/>
+    <Con from="14" weight="-349.468591461008"/>
+    <Con from="15" weight="-189.710482371095"/>
+    <Con from="16" weight="-218.471744694835"/>
+    <Con from="17" weight="250.000251483917"/>
+    <Con from="18" weight="-258.944050096995"/>
+    <Con from="19" weight="-100.6731805625"/>
+    <Con from="20" weight="-416.473502852722"/>
+    <Con from="21" weight="245.808039942355"/>
+    <Con from="22" weight="17.0121826896849"/>
+   </Neuron>
+   <Neuron id="31" bias="-224.704188841872">
+    <Con from="1" weight="-324.090762996629"/>
+    <Con from="2" weight="59.5888824032155"/>
+    <Con from="3" weight="210.739415177264"/>
+    <Con from="4" weight="-119.607256121012"/>
+    <Con from="5" weight="43.9966705350688"/>
+    <Con from="6" weight="15.4533963933268"/>
+    <Con from="7" weight="2.25948555793879"/>
+    <Con from="8" weight="30.912809057126"/>
+    <Con from="9" weight="572.03815316371"/>
+    <Con from="10" weight="-0.940266916981646"/>
+    <Con from="11" weight="-87.1879995079919"/>
+    <Con from="12" weight="354.167888496325"/>
+    <Con from="13" weight="-90.1139121390086"/>
+    <Con from="14" weight="-56.8673696738423"/>
+    <Con from="15" weight="-392.165338960013"/>
+    <Con from="16" weight="-207.686015920788"/>
+    <Con from="17" weight="59.0242882109796"/>
+    <Con from="18" weight="-241.047690041544"/>
+    <Con from="19" weight="-34.3723476056074"/>
+    <Con from="20" weight="407.007464338171"/>
+    <Con from="21" weight="-180.547572298111"/>
+    <Con from="22" weight="-317.410625177901"/>
+   </Neuron>
+   <Neuron id="32" bias="-80.3521408825673">
+    <Con from="1" weight="526.998516555443"/>
+    <Con from="2" weight="-12.0127310874316"/>
+    <Con from="3" weight="400.224374175456"/>
+    <Con from="4" weight="-400.521727087731"/>
+    <Con from="5" weight="-177.939809475464"/>
+    <Con from="6" weight="-221.222474226516"/>
+    <Con from="7" weight="439.422770045533"/>
+    <Con from="8" weight="-13.3430411660449"/>
+    <Con from="9" weight="37.640074414813"/>
+    <Con from="10" weight="94.8293779852094"/>
+    <Con from="11" weight="-35.8639597942832"/>
+    <Con from="12" weight="-265.377063287947"/>
+    <Con from="13" weight="269.182482216297"/>
+    <Con from="14" weight="-25.3201287430084"/>
+    <Con from="15" weight="-140.253167971605"/>
+    <Con from="16" weight="42.4325780127218"/>
+    <Con from="17" weight="-224.29619449979"/>
+    <Con from="18" weight="178.368948039332"/>
+    <Con from="19" weight="-604.466151137096"/>
+    <Con from="20" weight="-170.621134990775"/>
+    <Con from="21" weight="-173.179646520277"/>
+    <Con from="22" weight="-29.5956881306627"/>
+   </Neuron>
+  </NeuralLayer>
+  <NeuralLayer numberOfNeurons="1">
+   <Neuron id="33" bias="-0.891531489152056">
+    <Con from="23" weight="-3.25016021605628"/>
+    <Con from="24" weight="1.10761787074303"/>
+    <Con from="25" weight="1.32761464404372"/>
+    <Con from="26" weight="2.02936628033088"/>
+    <Con from="27" weight="1.26298194231391"/>
+    <Con from="28" weight="-2.56371586883395"/>
+    <Con from="29" weight="-1.95056285683433"/>
+    <Con from="30" weight="1.52674562332408"/>
+    <Con from="31" weight="1.21724548218145"/>
+    <Con from="32" weight="0.916339240157477"/>
+   </Neuron>
+  </NeuralLayer>
+  <NeuralOutputs numberOfOutputs="1">
+   <NeuralOutput outputNeuron="33">
+    <DerivedField name="derivedNO_response" optype="continuous" dataType="double">
+     <FieldRef field="response"/>
+    </DerivedField>
+   </NeuralOutput>
+  </NeuralOutputs>
+ </NeuralNetwork>
+</PMML>
