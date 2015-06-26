@@ -1,0 +1,23 @@
+/* Enter a unique ExecutionPlan */
+@Plan:name('ExecutionPlan')
+
+/* Enter a unique description for ExecutionPlan */
+-- @Plan:description('ExecutionPlan')
+
+/* define streams/tables and write queries here ... */
+
+@Import('RegulatorStream:1.0.0')
+define stream RegulatorStream (deviceID string, roomNo int, isOn bool);
+
+@Import('TempStream:1.0.0')
+define stream TempStream (deviceID long, roomNo int, temp double);
+
+@Export('RegulatorActionStream:1.0.0')
+define stream RegulatorActionStream (roomNo int, temp double, deviceID string, action string);
+
+from TempStream[temp > 30.0]#window.time(1 min) as T 
+  join RegulatorStream[isOn == false]#window.length(1) as R
+  on T.roomNo == R.roomNo
+select T.roomNo, T.temp, R.deviceID, 'start' as action
+insert into RegulatorActionStream ;
+
