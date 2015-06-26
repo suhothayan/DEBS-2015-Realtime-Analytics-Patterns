@@ -1,0 +1,28 @@
+/* Enter a unique ExecutionPlan */
+@Plan:name('ExecutionPlan')
+
+/* Enter a unique description for ExecutionPlan */
+-- @Plan:description('ExecutionPlan')
+
+/* define streams/tables and write queries here ... */
+
+@Import('TempStream:1.0.0')
+define stream TempStream (deviceID long, roomNo int, temp double);
+
+@Export('TransformedRoomTempStream:1.0.0')
+define stream TransformedRoomTempStream (uuid string, temp double, scale string);
+
+@Export('EnrichedRoomTempStream:1.0.0')
+define stream EnrichedRoomTempStream (roomNo int, temp double, scale string);
+
+from TempStream
+select roomNo, temp
+insert into RoomTempStream;
+
+from RoomTempStream
+select roomNo, temp, 'C' as scale
+insert into EnrichedRoomTempStream;
+
+from TempStream
+select str:concat(roomNo, '-', deviceID) as uuid, (temp * 1.8000 + 32.00) as temp, 'F' as scale
+insert into TransformedRoomTempStream;
