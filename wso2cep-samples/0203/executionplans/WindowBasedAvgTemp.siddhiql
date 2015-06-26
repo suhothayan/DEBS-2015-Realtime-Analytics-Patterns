@@ -18,9 +18,11 @@ define stream AvgRoomTempPerMinStream (roomNo int, avgTemp double);
 -- with time sliding window of 1 mim
 from TempStream#window.time(1 min)
 select roomNo, avg(temp) as avgTemp
+group by roomNo
 insert all events into AvgRoomTempStream ;
 
 -- with time batch (tumbling) window of 1 min
 from TempStream#window.timeBatch(1 min)
 select roomNo, avg(temp) as avgTemp
+group by roomNo
 insert all events into AvgRoomTempPerMinStream ;
