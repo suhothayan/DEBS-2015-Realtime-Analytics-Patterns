@@ -16,3 +16,5 @@ siddhi-samples/.idea/*
 *.iml
 
 **/target/*
+
+**/.idea/*
