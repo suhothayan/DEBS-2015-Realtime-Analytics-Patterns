@@ -47,11 +47,12 @@ public class PMMLModelProcessorTestCase {
 
         SiddhiManager siddhiManager = new SiddhiManager();
 
-        String inputStream = "define stream InputStream " +
-                "(root_shell double, su_attempted double, num_root double, num_file_creations double, num_shells double, num_access_files double, num_outbound_cmds double, is_host_login double, is_guest_login double, count double, srv_count double, serror_rate double, srv_serror_rate double);";
+        String inputStream = "" +
+                "define stream InputStream (root_shell double, su_attempted double, num_root double, num_file_creations double, num_shells double, num_access_files double, num_outbound_cmds double, is_host_login double, is_guest_login double, count double, srv_count double, serror_rate double, srv_serror_rate double);";
 
-        String query = "@info(name = 'query1') " +
-                "from InputStream#pmml:predict('"+ pmmlFile +"') " +
+        String query = "" +
+                "@info(name = 'query1') " +
+                "from InputStream#pmml:predict('" + pmmlFile + "') " +
                 "select * " +
                 "insert into outputStream ;";
 
@@ -85,10 +86,10 @@ public class PMMLModelProcessorTestCase {
 
         SiddhiManager siddhiManager = new SiddhiManager();
 
-        String inputStream = "define stream InputStream " +
-                "(root_shell double, su_attempted double, num_root double, num_file_creations double, num_shells double, num_access_files double, num_outbound_cmds double, is_host_login double, is_guest_login double, count double, srv_count double, serror_rate double, srv_serror_rate double);";
+        String inputStream = "define stream InputStream (root_shell double, su_attempted double, num_root double, num_file_creations double, num_shells double, num_access_files double, num_outbound_cmds double, is_host_login double, is_guest_login double, count double, srv_count double, serror_rate double, srv_serror_rate double);";
 
-        String query = "@info(name = 'query1') " +
+        String query = "" +
+                "@info(name = 'query1') " +
                 "from InputStream#pmml:predict('" + pmmlFile + "', root_shell, su_attempted, num_root, num_file_creations, num_shells, num_access_files, num_outbound_cmds, is_host_login, is_guest_login, count, srv_count, serror_rate, srv_serror_rate) " +
                 "select Predicted_response " +
                 "insert into outputStream ;";
