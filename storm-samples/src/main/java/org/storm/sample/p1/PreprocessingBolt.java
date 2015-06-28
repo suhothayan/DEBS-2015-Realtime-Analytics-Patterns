@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.storm.sample.PatternUtils;
+
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseBasicBolt;
@@ -36,8 +38,7 @@ public class PreprocessingBolt extends BaseBasicBolt {
 
     @Override
     public void execute(Tuple tuple, BasicOutputCollector collector) {
-        String priceAsStr = tuple.getString(1);
-        Integer price = Integer.parseInt(priceAsStr.trim());
+        long price = PatternUtils.getInt(tuple, 1);
         List<Object> output = new ArrayList<Object>();
 		if(price > 100){
 			output.add(tuple);

@@ -20,6 +20,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.storm.sample.PatternUtils;
+
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseBasicBolt;
@@ -29,7 +31,7 @@ import backtype.storm.tuple.Values;
 
 
 /**
-* Created on 6/27/15.
+* Batch windows
 */
 public class WindowBolt extends BaseBasicBolt {
     TimeWindow timeWindow = new TimeWindow(60000);
@@ -43,10 +45,8 @@ public class WindowBolt extends BaseBasicBolt {
         	List<Tuple> collectedTuples = timeWindow.reset(ts);
         	long sum = 0; 
         	for(Tuple t: collectedTuples){
-        		String priceAsS = t.getString(1);
-        		String amountAsS = t.getString(2);
-                long price = Long.parseLong(priceAsS.trim());
-                long amount = Long.parseLong(amountAsS.trim());
+                long price = PatternUtils.getInt(t, 1);
+                long amount = PatternUtils.getInt(t, 2);
                 sum = sum + (price * amount);
         	}
         	collector.emit(new Values(sum));

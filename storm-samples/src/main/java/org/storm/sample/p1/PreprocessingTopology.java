@@ -40,7 +40,6 @@ public class PreprocessingTopology {
         Config conf = new Config();
         conf.setDebug(false);
 
-
         if (args != null && args.length > 0) {
             conf.setNumWorkers(3);
             StormSubmitter.submitTopology(args[0], conf, builder.createTopology());

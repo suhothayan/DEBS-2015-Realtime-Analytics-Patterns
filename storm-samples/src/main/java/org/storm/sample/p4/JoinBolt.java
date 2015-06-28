@@ -16,6 +16,8 @@
 
 package org.storm.sample.p4;
 
+import static org.storm.sample.PatternUtils.getInt;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,11 +60,7 @@ public class JoinBolt extends BaseBasicBolt {
     }
     
     
-    public long getInt(Tuple t, int index){
-    	return Integer.parseInt(t.getString(index).trim());
-    }
-    
-    
+   
     public boolean hasHitHappend(Tuple bt, Tuple pt){
 		if(getInt(bt, 5) > 55 && 
 				getInt(bt, 0) - getInt(pt, 0) < 1000){
